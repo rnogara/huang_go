@@ -5,25 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
-    <!-- <script src="{% static 'js/script.js' %}"></script> -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Huang Go</title>
   </head>
   <body>
+    <script>
+      function toggleHideContactBtn() {
+        const btn = document.getElementById('contact-btn');
+        const card = document.getElementById('contact-card');
+        btn.classList.toggle('hide');
+        card.classList.toggle('hide');
+      }
+      function toggleHideScheduleBtn() {
+        const btn = document.getElementById('schedule-btn');
+        const card = document.getElementById('schedule-card');
+        btn.classList.toggle('hide');
+        card.classList.toggle('hide');
+      }
+      function toggleHideContactCard() {
+        const card = document.getElementById('contact-card');
+        const btn = document.getElementById('contact-btn');
+        card.classList.toggle('hide');
+        btn.classList.toggle('hide');
+      }
+      function toggleHideScheduleCard() {
+        const card = document.getElementById('schedule-card');
+        const btn = document.getElementById('schedule-btn');
+        card.classList.toggle('hide');
+        btn.classList.toggle('hide');
+      }
+    </script>
     <main class="container">
       <section class="contact-box">
-        <button id="contact-btn" class="btn">Contato</button>
-        <div onclick="" class="contact hide">
-          <form action="" class="contact-form hide">
+        <button id="contact-btn" class="btn" onclick="toggleHideContactBtn()">Contato</button>
+        <div id="contact-card" class="contact hide">
+          <form action="" class="contact-form" method="post">
             {% csrf_token %}
             {{ form }}
-            <button type="submit">Enviar</button>
+            <button class="form-btn" type="button" onclick="toggleHideContactCard()">Cancelar</button>
+            <button class="form-btn" type="submit">Enviar</button>
           </form>
         </div>
       </section>
       <section class="schedule-box">
-        <button id="schedule-btn" class="btn">Agenda</button>
-        <div class="schedule hide">
+        <button id="schedule-btn" class="btn" onclick="toggleHideScheduleBtn()">Agenda</button>
+        <div id="schedule-card" class="schedule hide" onclick="toggleHideScheduleCard()">
           {% if events %}
             <ul>
                 {% for event in events %}
