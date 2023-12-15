@@ -17,9 +17,14 @@ def home(request):
                 send_mail(subject, message + f'\n enviado por: {name}', from_email, ['tonyjjh@gmail.com'])
             except BadHeaderError:
                 return HttpResponse("Invalid header found.")
-            return HttpResponseRedirect("/contact/thanks/")
+            return HttpResponseRedirect("Obrigado por entrar em contato!")
         else:
-            return HttpResponse("Make sure all fields are entered and valid.")
+            return HttpResponse("Tenha certeza que todos os campos estão preenchidos e tente novamente.")
+        
+    def toggleHide(e):
+        e.classList.toggle("hide")
+        e.parentElement.children[1].classList.toggle("hide")
 
-    context = {"events": Events.objects.filter(date__gte=date.today()), "form": ContactForm()}
+
+    context = {"events": Events.objects.filter(date__gte=date.today()), "form": ContactForm(), "toggleHide": toggleHide}
     return render(request, "home.html", context)
