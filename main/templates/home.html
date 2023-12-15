@@ -47,6 +47,9 @@
           </form>
         </div>
       </section>
+      {% if messages %}
+        <script>alert("{{ message }}")</script>
+      {% endif %}
       <section class="schedule-box">
         <button id="schedule-btn" class="btn" onclick="toggleHideScheduleBtn()">Agenda</button>
         <div id="schedule-card" class="schedule hide" onclick="toggleHideScheduleCard()">
