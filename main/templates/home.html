@@ -56,7 +56,9 @@
           {% if events %}
             <ul>
                 {% for event in events %}
-                    <li>{{ event.date }}-{{ event.location }}</li>
+                    <li>
+                      <span class="schedule-title">Data:</span> {{ event.date }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="schedule-title">Lugar:</span> {{ event.location }}
+                    </li>
                 {% endfor %}
             </ul>
           {% else %}
