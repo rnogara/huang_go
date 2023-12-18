@@ -38,12 +38,12 @@
     <main class="container">
       <section class="contact-box">
         <button id="contact-btn" class="btn" onclick="toggleHideContactBtn()">Contato</button>
-        <div id="contact-card" class="contact hide">
+        <div id="contact-card" class="contact-card hide">
           <form action="" class="contact-form" method="post">
             {% csrf_token %}
             {{ form }}
-            <button class="form-btn" type="button" onclick="toggleHideContactCard()">Cancelar</button>
             <button class="form-btn" type="submit">Enviar</button>
+            <button class="form-btn" type="button" onclick="toggleHideContactCard()">Cancelar</button>
           </form>
         </div>
       </section>
@@ -52,7 +52,7 @@
       {% endif %}
       <section class="schedule-box">
         <button id="schedule-btn" class="btn" onclick="toggleHideScheduleBtn()">Agenda</button>
-        <div id="schedule-card" class="schedule hide" onclick="toggleHideScheduleCard()">
+        <div id="schedule-card" class="schedule-card hide" onclick="toggleHideScheduleCard()">
           {% if events %}
             <ul>
                 {% for event in events %}
