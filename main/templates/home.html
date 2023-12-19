@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
     <title>Huang Go</title>
   </head>
   <body>
@@ -36,6 +36,7 @@
       }
     </script>
     <main class="container">
+      <video autoplay muted loop id="petals"><source src="/static/img/petals.mp4" type="video/mp4"></video>
       <section class="contact-box">
         <button id="contact-btn" class="btn" onclick="toggleHideContactBtn()">Contato</button>
         <div id="contact-card" class="contact-card hide">
@@ -54,13 +55,14 @@
         <button id="schedule-btn" class="btn" onclick="toggleHideScheduleBtn()">Agenda</button>
         <div id="schedule-card" class="schedule-card hide" onclick="toggleHideScheduleCard()">
           {% if events %}
-            <ul>
-                {% for event in events %}
-                    <li>
-                      <span class="schedule-title">Data:</span> {{ event.date }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="schedule-title">Lugar:</span> {{ event.location }}
-                    </li>
-                {% endfor %}
-            </ul>
+            <table>
+              {% for event in events %}
+                <tr>
+                  <td>{{ event.date|date:"d/m" }}</td>
+                  <td class="schedule-location">{{ event.location }}</td>
+                </tr>
+              {% endfor %}
+            </table>
           {% else %}
             <p>Não há eventos agendados.</p>
           {% endif %}
