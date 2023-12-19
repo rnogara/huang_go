@@ -5,32 +5,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
-    <script src="{% static 'js/script.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
     <title>Huang Go</title>
   </head>
   <body>
+    <script>
+      function toggleHideContactBtn() {
+        const btn = document.getElementById('contact-btn');
+        const card = document.getElementById('contact-card');
+        btn.classList.toggle('hide');
+        card.classList.toggle('hide');
+      }
+      function toggleHideScheduleBtn() {
+        const btn = document.getElementById('schedule-btn');
+        const card = document.getElementById('schedule-card');
+        btn.classList.toggle('hide');
+        card.classList.toggle('hide');
+      }
+      function toggleHideContactCard() {
+        const card = document.getElementById('contact-card');
+        const btn = document.getElementById('contact-btn');
+        card.classList.toggle('hide');
+        btn.classList.toggle('hide');
+      }
+      function toggleHideScheduleCard() {
+        const card = document.getElementById('schedule-card');
+        const btn = document.getElementById('schedule-btn');
+        card.classList.toggle('hide');
+        btn.classList.toggle('hide');
+      }
+    </script>
     <main class="container">
+      <video autoplay muted loop id="petals"><source src="/static/img/petals.mp4" type="video/mp4"></video>
       <section class="contact-box">
-        <button id="contact-btn" class="btn" onclick="(e) => toggleHide(e)">Contato</button>
-        <div class="contact hide">
-          <form action="" class="contact-form">
+        <button id="contact-btn" class="btn" onclick="toggleHideContactBtn()">Contato</button>
+        <div id="contact-card" class="contact-card hide">
+          <form action="" class="contact-form" method="post">
             {% csrf_token %}
             {{ form }}
-            <button type="submit">Enviar</button>
+            <button class="form-btn" type="submit">Enviar</button>
+            <button class="form-btn" type="button" onclick="toggleHideContactCard()">Cancelar</button>
           </form>
-          <p>Telefone: (21) 98137-0115</p>
         </div>
       </section>
+      {% if messages %}
+        <script>alert("{{ message }}")</script>
+      {% endif %}
       <section class="schedule-box">
-        <button id="schedule-btn" class="btn" onclick="(e) => toggleHide(e)">Agenda</button>
-        <div class="schedule hide">
+        <button id="schedule-btn" class="btn" onclick="toggleHideScheduleBtn()">Agenda</button>
+        <div id="schedule-card" class="schedule-card hide" onclick="toggleHideScheduleCard()">
           {% if events %}
-            <ul>
-                {% for event in events %}
-                    <li>{{ event.date }}-{{ event.location }}</li>
-                {% endfor %}
-            </ul>
+            <table>
+              {% for event in events %}
+                <tr>
+                  <td>{{ event.date|date:"d/m" }}</td>
+                  <td class="schedule-location">{{ event.location }}</td>
+                </tr>
+              {% endfor %}
+            </table>
           {% else %}
             <p>Não há eventos agendados.</p>
           {% endif %}

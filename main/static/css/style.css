@@ -1,42 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&family=Yatra+One&display=swap');
+
 body {
-    background-color: rgb(38, 40, 43);
+    /* background-color: rgb(38, 40, 43); */
+    background: url("/static/img/bg.png") 100% 0 no-repeat fixed;
     color: rgb(255, 255, 255);
+    height: 100vh;
     margin: 0;
     padding: 0;
+    width: 100vw;
+    z-index: 0;
+}
+
+#petals {
+    bottom: 0; 
+    min-height: 100%;
+    min-width: 100%;
+    position: fixed;
+    right: 0;
+    filter:opacity(45%);
+    z-index: -1;
 }
 
 .container {
+    align-items: center;
     display: flex;
     flex-direction: row;
     height: 100%;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    vertical-align: middle;
     width: 100%;
+    z-index: 1;
 }
 
 .btn {
-    background-color: rgb(38, 40, 43);
+    background-color: rgba(38, 40, 43, 0.781);
     border: 1px solid rgb(192, 192, 192);
     border-radius: 5px;
     color: rgb(255, 255, 255);
     cursor: pointer;
-    font-size: 16px;
+    font-family: "Yatra One", sans-serif;
+    font-size: 32px;
+    height: 80px;
     margin: 10px;
     padding: 10px;
     text-align: center;
     text-decoration: none;
-    width: 100%;
+    width: 200px;
+    z-index: 1;
+}
+
+.btn:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(38, 40, 43);
+}
+
+.contact-card {
+    align-items: center;
+    background-color: rgba(197, 202, 209, 0.253);
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    margin: 50px;
+    padding: 20px;
+    visibility: visible;
+    z-index: 1;
+}
+
+.contact-card > form, .contact-card > form > div {
+    align-items: center;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    text-align: center;
+    z-index: 1;
+}
+
+.contact-card > form > div > label {
+    font-family: "Poiret One", sans-serif;
+    font-size: 18px;
+    text-align: center;
+    width: 300px;
+    z-index: 1;
+}
+
+.contact-card > form > div > input, textarea {
+    background-color: rgb(38, 40, 43);
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    font-family: "Poiret One", sans-serif;
+    font-size: 18px;
+    margin: 10px;
+    padding: 5px;
+    z-index: 1;
+}
+
+.contact-card > form > div > input {
+    width: 200px;
+    height: 30px;
+}
+
+.contact-card > form > div > textarea {
+    width: 300px;
+    height: 100px;
+}
+
+.form-btn {
+    background-color:  rgba(38, 40, 43, 0.781);
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-family: "Yatra One", sans-serif;
+    font-size: 18px;
+    height: 40px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 130px;
+    z-index: 1;
+}
+
+.form-btn:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(38, 40, 43);
+}
+
+.schedule-card {
+    align-items: center;
+    background-color: rgba(197, 202, 209, 0.253);
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    margin: 50px;
+    padding: 20px;
+    visibility: visible;
+    z-index: 1;
+}
+
+td {
+    font-family: "Poiret One", sans-serif;
+    font-size: 18px;
+    z-index: 1;
+}
+
+.schedule-location {
+    font-family: "Yatra One", sans-serif;
+    font-size: 20px;
+    padding-left: 20px;
 }
 
 .hide {
     display: none;
-}
-
-.email-sender {
-    border: 1px solid rgb(192, 192, 192);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    margin: 50px;
 }
