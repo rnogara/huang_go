@@ -69,7 +69,7 @@ body {
     z-index: 1;
 }
 
-.contact-card > form, .contact-card > form > div {
+.contact-card > form, .contact-card > form {
     align-items: center;
     display: flex;
     flex-flow: column wrap;
@@ -78,7 +78,7 @@ body {
     z-index: 1;
 }
 
-.contact-card > form > div > label {
+.contact-card > form > label {
     font-family: "Poiret One", sans-serif;
     font-size: 18px;
     text-align: center;
@@ -86,7 +86,7 @@ body {
     z-index: 1;
 }
 
-.contact-card > form > div > input, textarea {
+.contact-card > form > input, textarea {
     background-color: rgb(38, 40, 43);
     border: 1px solid rgb(192, 192, 192);
     border-radius: 10px;
